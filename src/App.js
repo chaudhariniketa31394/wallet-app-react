@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Nav from './components/shared/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Welcome from './components/Welcome';
+import Dashboard from './components/dashboard/Dashboard';
+import Wallet from './components/Wallet';
+import TransactionList from './components/TransactionList'
+import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Nav/>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/welcome" exact element={<Welcome />} /> 
+        <Route path="/dashboard" exact element={<Dashboard />} />
+        <Route path="/wallet" exact element={<Wallet />} />
+        <Route path="/transactions" exact element={<TransactionList />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
